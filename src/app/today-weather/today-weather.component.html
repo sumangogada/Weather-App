@@ -1,0 +1,39 @@
+<div class="row" *ngIf="weatherNow && !errorMessage">
+
+    <div class="col-xs-12">
+        <h3>Search City or Country</h3>
+        <form (ngSubmit)="onSearch()" #f="ngForm">
+            <div class="row">
+                <div class="col-sm-7 form-group">
+                    <input type="text" class="form-control" #userInput placeholder="Enter City or Country name"
+                        name="input" ngModel required #input="ngModel">
+                    <span *ngIf="!input.valid && input.touched">City or Country name is Required</span>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="time">As of {{currentTime | date:"HH:mm "}}</div>
+
+        <div class="currentTime">{{currentTime | date:"EEE MMM dd"}} </div>
+        <div class="location">{{city}}, {{country}}</div>
+        <div class="today-temperature">
+            <h2>
+                <b>{{weatherNow.main.temp | number:'1.0-0'}} &deg;F</b>
+            </h2>
+
+            <span><img src="assets/images/{{weatherNow.weather[0].icon}}.png" alt=""></span>
+        </div>
+        <div>
+            <div> Humidity: {{weatherNow.main.humidity}}%</div>
+            <div>
+                Feels like {{weatherNow.main.feels_like | number:'1.0-0' }}&deg;F
+                . {{weatherNow.weather[0].description}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="errorMessage">
+    <h3 class="text-danger">{{errorMessage}}</h3>
+</div>

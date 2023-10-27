@@ -1,0 +1,21 @@
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(8, 3rem);
+}
+
+.today-temperature {
+    display: flex;
+    align-items: center;
+}
+
+/* .details {
+    width: 760px;
+    height: 80px;
+    padding: 20px;
+    border: 1px solid rgb(190, 187, 187);
+    background: white;
+} */
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
